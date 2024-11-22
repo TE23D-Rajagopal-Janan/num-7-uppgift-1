@@ -1,4 +1,7 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Formats.Asn1;
+using System.IO.Compression;
+using System.Runtime.Serialization;
+using System.Security.Cryptography.X509Certificates;
 
 int x = 6;
 int y = 3;
@@ -41,7 +44,7 @@ int a = 0;
 int t = 0;
 while (a < 5)
 {
-a++ ;
+a++;
 Console.WriteLine("Välj ett tal");  
 tal = Console.ReadLine();
 int.TryParse(tal, out t);
@@ -52,12 +55,44 @@ if (t > 5)
 }
 // 7 
 Console.WriteLine("vad är heter du");
-name2 = "";
-name2 = Console.ReadLine();
-while( name2 != "kalleanka")
-{
-    
+string name2 = "";
+int z;
 
+name2 = Console.ReadLine();
+
+
+while(int.TryParse(name2, out z))
+{
+    Console.WriteLine("Wrong password try again");
+    name2 = Console.ReadLine(); 
+}
+
+// sista 8 
+int talet;
+string talet2 = "";
+bool correctParse = int.TryParse(talet2, out talet );
+if (correctParse || talet != 7)
+Console.WriteLine("Guess the number");
+talet2 = Console.ReadLine();
+while (correctParse || talet != 7)
+{
+talet2 = Console.ReadLine();
+int.TryParse(talet2, out talet );
+if (talet > 7)
+{
+    Console.WriteLine("The correct number is less");
+
+}
+else if (talet < 7)
+{
+    Console.WriteLine("The correct number is larger");
+
+}
+else
+{
+    Console.WriteLine("Correct congrats");
+
+}
 }
 
 
